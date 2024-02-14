@@ -9,6 +9,7 @@ import fr.flowarg.flowupdater.download.IProgressCallback;
 import fr.flowarg.flowupdater.download.Step;
 import fr.flowarg.flowupdater.download.json.CurseFileInfo;
 import fr.flowarg.flowupdater.download.json.Mod;
+import fr.flowarg.flowupdater.download.json.OptiFineInfo;
 import fr.flowarg.flowupdater.utils.ModFileDeleter;
 import fr.flowarg.flowupdater.versions.AbstractForgeVersion;
 import fr.flowarg.flowupdater.versions.ForgeVersionBuilder;
@@ -148,6 +149,7 @@ public class Home extends ContentPanel {
             final AbstractForgeVersion forge = new ForgeVersionBuilder(MinecraftInfos.FORGE_VERSION_TYPE)
                     .withForgeVersion(MinecraftInfos.FORGE_VERSION)
                     .withMods(mods)
+                    .withOptiFine(new OptiFineInfo("1.20.1_HD_U_I6"))
                     .withFileDeleter(new ModFileDeleter(true))
                     .build();
 
