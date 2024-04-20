@@ -8,7 +8,7 @@
 
 .bg-image {
     -fx-background-image: url("/images/background.png");
-    -fx-background-position: center center;
+    -fx-background-size: cover;
     -fx-background-repeat: stretch;
 }
 
@@ -52,7 +52,8 @@
 }
 
 .login-card .ms-login-btn {
-    -fx-background-color: rgb(230, 235, 235);
+    -fx-background-color: rgb(255, 255, 235);
+    -fx-background-size: cover;
 }
 
 .login-card .ms-login-btn:hover {

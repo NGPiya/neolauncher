@@ -41,6 +41,7 @@ javafx {
 
 application {
     getMainClass().set('ch.piyamon.neolauncher.Main')
+    setApplicationDefaultJvmArgs {'-XstartOnFirstThread'}
 }
 
 compileJava {
