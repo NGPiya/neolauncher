@@ -10,9 +10,9 @@ import fr.flowarg.flowupdater.download.Step;
 import fr.flowarg.flowupdater.download.json.Mod;
 import fr.flowarg.flowupdater.download.json.OptiFineInfo;
 import fr.flowarg.flowupdater.utils.ModFileDeleter;
-import fr.flowarg.flowupdater.versions.AbstractForgeVersion;
-import fr.flowarg.flowupdater.versions.ForgeVersionBuilder;
 import fr.flowarg.flowupdater.versions.VanillaVersion;
+import fr.flowarg.flowupdater.versions.forge.ForgeVersion;
+import fr.flowarg.flowupdater.versions.forge.ForgeVersionBuilder;
 import fr.flowarg.materialdesignfontfx.MaterialDesignIcon;
 import fr.flowarg.materialdesignfontfx.MaterialDesignIconView;
 import fr.flowarg.openlauncherlib.NoFramework;
@@ -144,10 +144,9 @@ public class Home extends ContentPanel {
                     .build();
             List<Mod> mods = Mod.getModsFromJson(MinecraftInfos.MODS_LIST_URL);
 
-            final AbstractForgeVersion forge = new ForgeVersionBuilder(MinecraftInfos.FORGE_VERSION_TYPE)
+            final ForgeVersion forge = new ForgeVersionBuilder()
                     .withForgeVersion(MinecraftInfos.FORGE_VERSION)
                     .withMods(mods)
-                    .withOptiFine(new OptiFineInfo("1.20.1_HD_U_I6"))
                     .withFileDeleter(new ModFileDeleter(true))
                     .build();
 
