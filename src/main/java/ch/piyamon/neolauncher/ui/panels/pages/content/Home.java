@@ -11,6 +11,8 @@ import fr.flowarg.flowupdater.download.json.Mod;
 import fr.flowarg.flowupdater.download.json.OptiFineInfo;
 import fr.flowarg.flowupdater.utils.ModFileDeleter;
 import fr.flowarg.flowupdater.versions.VanillaVersion;
+import fr.flowarg.flowupdater.versions.fabric.FabricVersion;
+import fr.flowarg.flowupdater.versions.fabric.FabricVersionBuilder;
 import fr.flowarg.flowupdater.versions.forge.ForgeVersion;
 import fr.flowarg.flowupdater.versions.forge.ForgeVersionBuilder;
 import fr.flowarg.materialdesignfontfx.MaterialDesignIcon;
@@ -144,15 +146,15 @@ public class Home extends ContentPanel {
                     .build();
             List<Mod> mods = Mod.getModsFromJson(MinecraftInfos.MODS_LIST_URL);
 
-            final ForgeVersion forge = new ForgeVersionBuilder()
-                    .withForgeVersion(MinecraftInfos.FORGE_VERSION)
+            final FabricVersion fabric = new FabricVersionBuilder()
+                    .withFabricVersion(MinecraftInfos.MOD_LOADER_VERSION)
                     .withMods(mods)
                     .withFileDeleter(new ModFileDeleter(true))
                     .build();
 
             final FlowUpdater updater = new FlowUpdater.FlowUpdaterBuilder()
                     .withVanillaVersion(vanillaVersion)
-                    .withModLoaderVersion(forge)
+                    .withModLoaderVersion(fabric)
                     .withLogger(Launcher.getInstance().getLogger())
                     .withProgressCallback(callback)
                     .build();
@@ -175,7 +177,7 @@ public class Home extends ContentPanel {
 
             noFramework.getAdditionalVmArgs().add(this.getRamArgsFromSaver());
 
-            Process p = noFramework.launch(gameVersion, MinecraftInfos.FORGE_VERSION.split("-")[1], NoFramework.ModLoader.FORGE);
+            Process p = noFramework.launch(gameVersion, MinecraftInfos.MOD_LOADER_VERSION.split("-").length >= 2 ? MinecraftInfos.MOD_LOADER_VERSION.split("-")[1] : MinecraftInfos.MOD_LOADER_VERSION, MinecraftInfos.MODLOADER);
 
             Platform.runLater(() -> {
                 try {
