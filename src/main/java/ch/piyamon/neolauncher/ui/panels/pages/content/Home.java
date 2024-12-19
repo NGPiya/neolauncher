@@ -144,11 +144,9 @@ public class Home extends ContentPanel {
             final VanillaVersion vanillaVersion = new VanillaVersion.VanillaVersionBuilder()
                     .withName(MinecraftInfos.GAME_VERSION)
                     .build();
-            List<Mod> mods = Mod.getModsFromJson(MinecraftInfos.MODS_LIST_URL);
 
             final FabricVersion fabric = new FabricVersionBuilder()
                     .withFabricVersion(MinecraftInfos.MOD_LOADER_VERSION)
-                    .withMods(mods)
                     .withFileDeleter(new ModFileDeleter(true))
                     .build();
 
